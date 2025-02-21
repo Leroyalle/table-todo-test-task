@@ -15,4 +15,14 @@ export default defineConfig({
       '@lib': path.resolve(__dirname, './src/lib'),
     },
   },
+  preview: {
+    port: 8080,
+    strictPort: true,
+  },
+  server: {
+    port: 8080,
+    strictPort: true,
+    host: true,
+    origin: 'http://localhost:8080',
+  },
 });
