@@ -15,3 +15,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@layer {
+  body {
+    @apply bg-primary;
+  }
+}
+tbody tr:last-child td {
+  border-bottom: none !important;
+}

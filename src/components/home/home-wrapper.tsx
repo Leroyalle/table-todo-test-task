@@ -14,9 +14,9 @@ export const HomeWrapper: FC<Props> = ({ className }) => {
 
   return (
     <Container>
-      <section className={clsx('bg-primary h-full p-10', className)}>
-        <HomeHead />
-        <UsersList items={users} />
+      <section className={clsx('h-full p-10', className)}>
+        <HomeHead className="mb-6" />
+        <UsersList users={users} />
         {users && !isFetchingNextPage && cursor}
       </section>
     </Container>
