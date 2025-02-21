@@ -1,3 +1,9 @@
+import { Todo } from '../todo';
+
+export type UserWithTodos = User & {
+  todos: Todo[];
+};
+
 export interface User {
   id: number;
   name: string;
