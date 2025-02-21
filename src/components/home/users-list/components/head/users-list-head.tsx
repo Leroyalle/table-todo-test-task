@@ -9,7 +9,7 @@ interface Props {
 export const UsersListHead: FC<Props> = ({ className }) => {
   return (
     <thead className={clsx('', className)}>
-      <tr className="text-[8px] text-muted/30 border-spacing-3 border-collapse">
+      <tr className="text-[8px] text-muted/30 border-spacing-3 border-collapse bg-white/[0.04]">
         <UsersListHeadItem value="#" className="pr-0 w-fit" />
         <UsersListHeadItem value="USERNAME" />
         <UsersListHeadItem value="TO-DO-COUNT" className="text-end" />

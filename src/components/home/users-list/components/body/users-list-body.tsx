@@ -16,7 +16,7 @@ export const UsersListBody: FC<Props> = ({ users, className }) => {
         <tr key={user.id} className="text-xs">
           <Cell value={`${index + 1}`} />
           <User name={user.name} email={user.email} className="border-b border-gray-500" />
-          <Cell value={`${user.todos.length}`} />
+          <Cell value={`${user.todos.length}`} className="tablet:text-start" />
         </tr>
       ))}
     </tbody>

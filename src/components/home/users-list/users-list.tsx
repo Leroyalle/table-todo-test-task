@@ -19,7 +19,7 @@ export const UsersList: FC<Props> = ({ users, className }) => {
       className={clsx(
         'border-[1px] border-gray-500 w-full rounded-xl',
         'border-separate border-spacing-0',
-        'table-fixed',
+        'table-fixed overflow-hidden',
         className,
       )}>
       <Colgroup />

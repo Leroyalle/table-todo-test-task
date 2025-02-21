@@ -11,7 +11,7 @@ interface Props {
 export const User: FC<Props> = ({ name, email, className }) => {
   return (
     <td className={clsx('p-3 truncate', className)}>
-      <div className="flex items-center gap-x-[10px]">
+      <div className={clsx('flex items-center gap-x-[10px]', 'tablet:gap-x-4')}>
         <UserAvatar />
         <div className="flex flex-col">
           <UserName name={name} />
