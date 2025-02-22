@@ -1,50 +1,104 @@
-# React + TypeScript + Vite
+# Таблица пользователей с ToDo задачами
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Веб-приложение для отображения пользователей и их todo-задач в табличном формате с бесконечной прокруткой.
 
-Currently, two official plugins are available:
+## Стек технологий
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **TypeScript**
+- **React**
+- **TanStack Query (React Query)**
+- **Tailwind CSS**
+- **Jest**
 
-## Expanding the ESLint configuration
+## Функциональные возможности
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. **Отображение списка пользователей:**
 
-- Configure the top-level `parserOptions` property like this:
+   - Показывает информацию о пользователях (имя, email, количество задач)
+   - Адаптивная табличная верстка
+   - Заглушка аватара для каждого пользователя
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+2. **Интеграция с ToDo:**
+
+   - Отображение количества todo-задач для каждого пользователя
+   - Получение задач через JSONPlaceholder API
+   - Связывание задач с соответствующими пользователями
+
+3. **Бесконечная прокрутка:**
+
+   - Загрузка пользователей группами по 10
+   - Автоматическая подгрузка при прокрутке
+   - Индикатор загрузки данных
+
+## Структура проекта
+
+```
+src/
+  ├── components/     # React компоненты
+  ├── hooks/         # Пользовательские хуки
+  ├── lib/           # Вспомогательные функции
+  ├── services/      # Сервисы для работы с API
+  ├── types/         # TypeScript типы
+  └── pages/         # Компоненты страниц
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Тестирование
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Проект использует Jest для модульного тестирования. Тесты охватывают:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+- Вызовы сервиса API к JSONPlaceholder
+- Обработку ответов
+- Сценарии с ошибками
+
+Для запуска тестов:
+
+```bash
+npm test
 ```
+
+## Запуск приложения
+
+### Требования:
+
+- Node.js 20+
+- Предустановленный и открытый Docker (опционально)
+
+### Локальная разработка:
+
+1. Клонируйте репозиторий
+2. Создайте файл [`.env`](.env) из шаблона:
+
+```bash
+cp .env.example .env
+```
+
+3. Установите зависимости:
+
+```bash
+npm install
+```
+
+4. Запустите сервер разработки:
+
+```bash
+npm run dev
+```
+
+### Запуск через Docker:
+
+1. Соберите и запустите через Docker Compose:
+
+```bash
+docker compose up --build
+```
+
+Приложение будет доступно по адресу `http://localhost:8080`
+
+## Интеграция с API
+
+Приложение использует [JSONPlaceholder](https://jsonplaceholder.typicode.com) для получения:
+
+- Данных пользователей
+- Todo-задач
+
+Конечные точки API настраиваются через переменные окружения.
