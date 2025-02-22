@@ -3,13 +3,23 @@ import { clsx } from 'clsx';
 import { Colgroup, UsersListHead } from './components';
 import { UserWithTodos } from '@/types';
 import { UsersListBody } from './components/body';
+import { Loader } from 'lucide-react';
 
 interface Props {
   users: UserWithTodos[] | undefined;
+  isLoading?: boolean;
   className?: string;
 }
 
-export const UsersList: FC<Props> = ({ users, className }) => {
+export const UsersList: FC<Props> = ({ users, className, isLoading }) => {
+  if (isLoading) {
+    return (
+      <div>
+        <Loader className="animate-spin" />
+      </div>
+    );
+  }
+
   if (!users) {
     return null;
   }

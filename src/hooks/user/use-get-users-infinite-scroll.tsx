@@ -8,11 +8,15 @@ import { useInView } from 'react-intersection-observer';
 export const useGetUsersInfiniteScroll = () => {
   const [ref, inView] = useInView();
 
-  const { data: todos } = useQuery(getTodosQueryOptions());
+  const {
+    data: todos,
+    isPending: isPendingTodos,
+    isError: isErrorTodos,
+  } = useQuery(getTodosQueryOptions());
   const {
     data: users,
-    isPending,
-    isError,
+    isPending: isPendingUsers,
+    isError: isErrorUsers,
     fetchNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery(getUsersInfiniteQueryOptions());
@@ -26,5 +30,11 @@ export const useGetUsersInfiniteScroll = () => {
   const enhancedUsers = getUsersWithTodos(users, todos);
   const cursor = <Cursor isFetching={isFetchingNextPage} ref={ref} />;
 
-  return { data: enhancedUsers, isPending, isError, cursor, isFetchingNextPage };
+  return {
+    data: enhancedUsers,
+    isPending: isPendingUsers || isPendingTodos,
+    isError: isErrorUsers || isErrorTodos,
+    cursor,
+    isFetchingNextPage,
+  };
 };
